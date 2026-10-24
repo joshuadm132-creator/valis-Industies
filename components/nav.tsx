@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <nav className="border-b border-border bg-background">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 ">
 
         <div className="py-5 flex items-center justify-between">
 
@@ -17,26 +17,11 @@ export default function Navbar() {
             <Image
               src={business.logoImage}
               alt={`${business.name} Logo`}
-              width={40}
-              height={40}
-              className="h-12 w-auto object-contain"
+              width={10}
+              height={10}
+              className="h-10 w-auto object-contain"
               priority
             />
-
-            <span
-            className="
-              text-2xl md:text-2xl
-              font-heading font-semibold
-              tracking-tight
-              bg-gradient-to-r
-              from-blue-950
-              via-blue-700
-              to-blue-600
-              bg-clip-text
-              text-transparent
-            "
-          > TECH
-          </span>
           </Link>
 
           <div className="hidden md:flex gap-6">

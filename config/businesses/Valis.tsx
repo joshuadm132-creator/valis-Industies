@@ -14,7 +14,7 @@ export const Valis = {
 
   name: "Valis Tech",
   logo: "Valis",
-  logoImage: "/ValisLogo.png",
+  logoImage: "/wordlogo.svg",
   tagline: "African Advancement",
   description: "Building the digital infrastructure for growing businesses",
   theme: talosTheme,

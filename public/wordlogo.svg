@@ -1,0 +1,39 @@
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 476 142"
+  width="476"
+  height="142"
+  fill="none"
+>
+  <g
+    stroke="#122e74"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- V -->
+    <path d="M78 52 L111 95 L146 52" />
+
+    <!-- A: inverted-V shape, no crossbar -->
+    <path d="M161 96 L194 52 L227 96" />
+
+    <!-- L -->
+    <path d="M258 52 V88 Q258 96 266 96 H298" />
+
+    <!-- I -->
+    <path d="M331 52 V96" />
+
+    <!-- S -->
+    <path d="
+      M411 52
+      H386
+      Q372 52 372 64
+      Q372 74 386 74
+      H402
+      Q416 74 416 85
+      Q416 96 402 96
+      H374
+    " />
+  </g>
+</svg>
