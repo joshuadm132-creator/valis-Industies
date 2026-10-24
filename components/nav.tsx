@@ -9,9 +9,9 @@ export default function Navbar() {
 
   return (
     <nav className="border-b border-border bg-background">
-      <div className="max-w-7xl mx-auto px-6 ">
+      <div className="md:max-w-7xl mx-auto px-4 ">
 
-        <div className="py-5 flex items-center justify-between">
+        <div className="py-2 flex items-center justify-between">
 
          <Link href="/" className="flex items-center gap-3">
             <Image
@@ -29,7 +29,7 @@ export default function Navbar() {
               <Link
                 key={item?.href}
                 href={item?.href ?? "#"}
-                className="text-text-muted hover:text-text transition"
+                className="text-text-muted hover:text-text transition text-sm"
               >
                 {item?.label}
               </Link>
