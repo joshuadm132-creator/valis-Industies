@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useEffect, useState, ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type FadeRotatorProps = {
   items: ReactNode[];
@@ -19,24 +20,57 @@ export default function FadeRotator({
 }: FadeRotatorProps) {
   const [index, setIndex] = useState(0);
 
+  // Keep the current index available to the timer.
+  const indexRef = useRef(0);
+
+  // Always use the latest callback without restarting the timer.
+  const onChangeRef = useRef(onChange);
+
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+
   useEffect(() => {
     if (items.length <= 1) return;
-    const timer = setInterval(() => {
-      setIndex((prev) => {
-        const next = (prev + 1) % items.length;
-        onChange?.(next);
-        return next;
-      });
+
+    const timer = window.setInterval(() => {
+      const next = (indexRef.current + 1) % items.length;
+
+      // Update the ref and React state separately.
+      indexRef.current = next;
+      setIndex(next);
+
+      // Notify the parent outside the state updater.
+      onChangeRef.current?.(next);
     }, interval);
-    return () => clearInterval(timer);
-  }, [items.length, interval, onChange]);
+
+    return () => window.clearInterval(timer);
+  }, [items.length, interval]);
+
+  // Keep the index valid if the number of items changes.
+  useEffect(() => {
+    if (items.length === 0) {
+      indexRef.current = 0;
+      return;
+    }
+
+    if (index >= items.length) {
+      const next = 0;
+      indexRef.current = next;
+      setIndex(next);
+    } else {
+      indexRef.current = index;
+    }
+  }, [index, items.length]);
 
   if (items.length === 0) return null;
 
   return (
     <div
       className="relative"
-      style={{ minHeight: minHeight ? `${minHeight}px` : undefined }}
+      style={{
+        minHeight: minHeight ? `${minHeight}px` : undefined,
+      }}
     >
       {items.map((item, i) => (
         <div

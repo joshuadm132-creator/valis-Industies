@@ -526,7 +526,7 @@ function AddonsBlock({
           {addons.items.map((addon) => (
             <div
               key={addon.id}
-              className="flex flex-col p-6 rounded-xl border border-border bg-background"
+              className="flex flex-col p-6 border border-border bg-background"
             >
               <div className="flex items-start justify-between gap-3">
                 <h4 className="font-heading font-semibold text-text">

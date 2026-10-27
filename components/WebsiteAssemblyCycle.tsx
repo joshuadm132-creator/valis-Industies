@@ -5,8 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import WebsiteAssembly from "@/components/WebsiteAssembly";
 import WebsitePreview from "@/components/WebsitePreview";
 
-const DISPLAY_DURATION_MS = 6500;
-const TRANSITION_DURATION_MS = 1650;
+const DISPLAY_DURATION_MS = 4500;
+const TRANSITION_DURATION_MS = 650;
 const MAX_CYCLES = 1;
 
 type Visual = "assembly" | "preview";

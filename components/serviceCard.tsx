@@ -28,7 +28,7 @@ export default function ServiceCard({
   const inner = (
     <>
       {/* Header row */}
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-4 ">
         <div className="flex items-center gap-3">
           {service.tag && (
             <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary">
@@ -72,7 +72,7 @@ export default function ServiceCard({
   );
 
   const baseClasses = `
-    group block h-full p-6 rounded-2xl border transition-all duration-200
+    group block h-full p-6 rounded-tl-xl rounded-tr-4xl rounded-bl-4xl rounded-br-none border transition-all duration-200
     ${
       active
         ? "border-primary bg-primary/5 shadow-sm"

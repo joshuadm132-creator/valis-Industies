@@ -99,7 +99,7 @@ function PreviewGrid({ services }: { services: Service[] }) {
         <div className="mt-12">
           <Link
             href="/services"
-            className="inline-block px-6 py-3 bg-primary text-text-inverse rounded-lg hover:bg-primary-hover transition font-medium"
+            className="inline-block px-6 py-3 bg-red-600 text-text-inverse rounded-tl-sm rounded-tr-xl rounded-bl-xl rounded-br-nonehover:bg-primary-hover transition font-medium"
           >
             Explore All Services
           </Link>
@@ -189,7 +189,7 @@ function FullAccordion({ services }: { services: Service[] }) {
 
 function ServiceDetail({ service }: { service: Service }) {
   return (
-    <div className="rounded-2xl border border-border bg-surface p-6 md:p-10">
+    <div className="rounded-none border border-border bg-surface p-6 md:p-10">
       <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
         {/* Text column */}
         <div>
