@@ -1195,17 +1195,6 @@ contactContent: {
      GALLERY PAGE
      ============================================================ */
 
-  Gallery: {
-    title: "Our Work",
-    items: [
-      { title: "Business Website", src: "https://placehold.co/600x800?text=Business+Website", alt: "Business website" },
-      { title: "Property Listings", src: "https://placehold.co/600x800?text=Property+Listings", alt: "Property listings site" },
-      { title: "Landing Page", src: "https://placehold.co/600x800?text=Landing+Page", alt: "Landing page" },
-      { title: "SEO Campaign", src: "https://placehold.co/600x800?text=SEO+Campaign", alt: "SEO campaign" },
-      { title: "Payment Integration", src: "https://placehold.co/600x800?text=Payment+Integration", alt: "Payment integration" },
-      { title: "Mobile Experience", src: "https://placehold.co/600x800?text=Mobile+Experience", alt: "Mobile experience" },
-    ],
-  },
 
   /* ============================================================
      FOOTER
