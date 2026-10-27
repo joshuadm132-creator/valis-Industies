@@ -31,3 +31,123 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
+/* Website assembly hero visual */
+
+.website-assembly {
+  aspect-ratio: 1 / 0.92;
+  isolation: isolate;
+}
+
+.website-panel {
+  box-sizing: border-box;
+  width: 72%;
+  overflow: hidden;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation:
+    website-assemble 800ms cubic-bezier(0.2, 0.75, 0.25, 1) both,
+    website-float 7s ease-in-out 900ms infinite;
+}
+
+.website-panel-main {
+  z-index: 3;
+  top: 19%;
+  left: 14%;
+  --start-x: -28px;
+  --start-y: 24px;
+  --start-rotate: -5deg;
+  --end-rotate: -2deg;
+  animation-delay: 0ms, 900ms;
+}
+
+.website-panel-left {
+  z-index: 2;
+  top: 7%;
+  left: 0;
+  width: 57%;
+  --start-x: -35px;
+  --start-y: -12px;
+  --start-rotate: -8deg;
+  --end-rotate: -6deg;
+  animation-delay: 120ms, 1020ms;
+}
+
+.website-panel-right {
+  z-index: 4;
+  top: 43%;
+  right: 0;
+  width: 59%;
+  --start-x: 32px;
+  --start-y: 22px;
+  --start-rotate: 7deg;
+  --end-rotate: 5deg;
+  animation-delay: 240ms, 1140ms;
+}
+
+.website-assembly-indicator {
+  animation: website-indicator-in 700ms ease-out 500ms both;
+}
+
+@keyframes website-assemble {
+  from {
+    opacity: 0;
+    transform: translate3d(
+      var(--start-x, 0),
+      var(--start-y, 0),
+      0
+    ) rotate(var(--start-rotate, 0deg));
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0)
+      rotate(var(--end-rotate, 0deg));
+  }
+}
+
+@keyframes website-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0)
+      rotate(var(--end-rotate, 0deg));
+  }
+
+  50% {
+    transform: translate3d(0, -5px, 0)
+      rotate(var(--end-rotate, 0deg));
+  }
+}
+
+@keyframes website-indicator-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-50%, 8px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Simplify motion for visitors who prefer reduced animation */
+@media (prefers-reduced-motion: reduce) {
+  .website-panel,
+  .website-assembly-indicator {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* Smaller screens */
+@media (max-width: 767px) {
+  .website-assembly {
+    max-width: 460px;
+  }
+
+  .website-panel {
+    box-shadow: 0 8px 24px rgb(15 23 42 / 10%);
+  }
+}

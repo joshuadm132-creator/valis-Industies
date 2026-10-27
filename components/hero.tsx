@@ -1,6 +1,6 @@
 import Link from "next/link";
 import FadeRotator from "@/components/FadeRotator";
-import CodeTyper from "@/components/CodeTyper";
+import WebsiteAssemblyCycle from "@/components/WebsiteAssemblyCycle";
 import { business } from "@/config/business";
 
 /* ============================================================
@@ -75,13 +75,11 @@ function HomeHero({ title, description }: HomeHeroProps) {
             </div>
           </div>
 
-          {/* RIGHT: Chart */}
-          <div className="relative">
-            <p className="text-sm font-semibold text-accent uppercase tracking-wide">
-              How we do things
-            </p>
-            <CodeTyper />
-          </div>
+          
+         {/* RIGHT: Website assembly visual */}
+<div className="relative min-w-0">
+  <WebsiteAssemblyCycle />
+</div>
         </div>
       </div>
     </section>
