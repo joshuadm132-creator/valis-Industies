@@ -1,12 +1,26 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { themeToCssVars } from "@/config/ThemeToCSS";
 import { business } from "@/config/business";
 import { site } from "@/config/businesses/site";
+import { Inter, Playfair_Display, Share_Tech_Mono, Fira_Code } from "next/font/google";
+
+
+// Cyberpunk stylized font
+export const shareTechMono = Share_Tech_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-cyber",
+});
+
+// Professional developer code font
+export const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira",
+});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -135,7 +149,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-ZW"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
+      className={`${inter.variable} ${playfair.variable} ${shareTechMono.variable} ${firaCode.variable} h-full antialiased scroll-smooth`}
       style={themeToCssVars(business.theme)}
     >
       <body className="min-h-full flex flex-col">

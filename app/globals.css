@@ -20,6 +20,8 @@
   /* Fonts — defaults, overridden at runtime */
   --font-body: system-ui, -apple-system, sans-serif;
   --font-heading: system-ui, -apple-system, sans-serif;
+  --font-cyber: var(--font-cyber);
+  --font-fira: var(--font-fira);
 }
 
 body {

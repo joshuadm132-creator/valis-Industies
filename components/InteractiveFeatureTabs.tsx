@@ -86,7 +86,7 @@ export default function InteractiveFeatureTabs({
       : "bg-background";
 
   const headingClass = isDark
-    ? "text-[#10B981]"
+    ? "text-[#00ff9f]"
     : "text-text";
 
   const mutedClass = isDark
@@ -330,11 +330,11 @@ function DecorativeSquares({
 
   return (
     <>
-      <div
+      {/* <div
         aria-hidden="true"
         className={`
           absolute
-          ${mobile ? "top-5 left-4 w-16 h-16" : "top-8 left-5 w-24 h-24"}
+          ${mobile ? "top-5 left-4 w-16 h-16" : "top-4 left-10 w-94 h-24"}
           ${first}
         `}
       />
@@ -342,10 +342,10 @@ function DecorativeSquares({
         aria-hidden="true"
         className={`
           absolute
-          ${mobile ? "top-3 left-6 w-16 h-16" : "top-5 left-8 w-24 h-24"}
+          ${mobile ? "top-3 left-6 w-16 h-16" : "top-6 left-2 w-24 h-24"}
           ${second}
         `}
-      />
+      /> */}
     </>
   );
 }
@@ -383,33 +383,36 @@ function DesktopGridItem({
         dark={dark}
       />
 
-      <div className="relative z-10">
-        <span className={`
-          text-sm font-semibold
-          ${accentTextClass}
-        `}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
+     <div className="relative z-10">
+  {/* Flex row with items-center centers the index and title vertically relative to each other */}
+  <div className="flex flex-row items-center gap-3">
+    <span className={`text-sm font-semibold ${accentTextClass}`}>
+      {String(index + 1).padStart(2, "0")}
+    </span>
 
-        <h3 className={`
-          mt-5
-          font-heading font-semibold
-          text-2xl lg:text-3xl
-          leading-tight tracking-tight
-          ${dark ? "text-[#79FF63]" : "text-text"}
-        `}>
-          {item.title}
-        </h3>
+    {/* Removed mt-5 so it aligns correctly with the index */}
+    <h3 className={`
+      font-fira
+      text-2xl lg:text-3xl
+      leading-tight tracking-tight
+      ${dark ? "text-[#79FF63]" : "text-text"}
+    `}>
+      {item.title}
+    </h3>
+  </div>
 
-        <p className={`
-          mt-3 max-w-xl
-          text-sm lg:text-base
-          leading-relaxed
-          ${dark ? "text-[#E5E7EB]" : background === "warm" ? "text-[#44403C]" : "text-[#374151]"}
-        `}>
-          {item.description}
-        </p>
-      </div>
+  
+  <p className={`
+    mt-3 max-w-xl
+    text-sm lg:text-base
+    leading-relaxed
+    font-cyber 
+    ${dark ? "text-[#E5E7EB]" : background === "warm" ? "text-[#44403C]" : "text-[#374151]"}
+  `}>
+    {item.description}
+  </p>
+</div>
+
     </article>
   );
 }
@@ -493,7 +496,7 @@ function MobileAccordionItem({
 
         <span className={`
           flex-1 min-w-0
-          font-heading font-semibold
+          font-fira 
           text-lg sm:text-xl
           leading-tight
           ${textClass}
@@ -534,6 +537,7 @@ function MobileAccordionItem({
               pb-6 pl-8 pr-4
               text-sm sm:text-base
               leading-relaxed
+              font-cyber 
               ${mutedClass}
             `}>
               {item.description}
