@@ -148,6 +148,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .website-panel {
-    box-shadow: 0 8px 24px rgb(15 23 42 / 10%);
+    box-shadow: 0 8px 24px rgba(238, 238, 17, 0.1);
   }
 }

@@ -355,13 +355,14 @@ contactContent: {
   },
 
   whyYouNeedWebsite: {
-    eyebrow: "Why It Matters",
-    title: "Why You Need a Website",
-    subtitle:
-      "If your business is only on social media or word of mouth, you're leaving growth on the table. Here's what a proper website actually does for you.",
-    variant: "reasons" as const,
-    columns: 2 as const,
-    background: "gray" as const,
+  eyebrow: "Why It Matters",
+  title: "Why You Need a Website",
+  subtitle:
+    "If your business is only on social media or word of mouth, you're leaving growth on the table. Here's what a proper website actually does for you.",
+  variant: "reasons" as const,
+  columns: 2 as const,
+  background: "warm" as const,
+  accent: "warm" as const,
     items: [
       {
         id: "credibility",
