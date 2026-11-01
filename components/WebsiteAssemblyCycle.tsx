@@ -123,8 +123,8 @@ return (
         )}
       </div>
     </div>
-
-    <p className="mt-3 text-center text-xs text-yellow-300">
+        
+    <p className="mt-3 text-center text-xs text-yellow-300 z-10">
       Click to explore another view
     </p>
   </div>

@@ -12,8 +12,8 @@ export const Valis = {
      BRAND
      ============================================================ */
 
-  name: "Valis Tech",
-  logo: "Valis",
+  name: "Valis Cybernet",
+  logo: "Valis Cybernet",
   logoImage: "/wordlogo.svg",
   tagline: "African Advancement",
   description: "Building the digital infrastructure for growing businesses",
@@ -1202,7 +1202,7 @@ contactContent: {
      ============================================================ */
 
   footerData: {
-    companyName: "Valis Tech",
+    companyName: "Valis Cyber",
     description: "Modern websites and ongoing care for growing businesses.",
     sections: [
       {

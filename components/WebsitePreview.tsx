@@ -21,7 +21,7 @@ export default function WebsitePreview() {
             <span />
           </div>
           <div className="assembly-address">
-            valis.tech
+            valisCyber.vercel.app
           </div>
         </div>
 
@@ -29,7 +29,7 @@ export default function WebsitePreview() {
         <nav className="assembly-nav">
           <div className="assembly-logo">
             <span className="assembly-logo-mark">V</span>
-            <span>VALIS</span>
+            <span>VALIS Cyber</span>
           </div>
 
           <div className="assembly-nav-links">

@@ -1,9 +1,9 @@
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 476 142"
+  viewBox="0 0 476 160"
   width="476"
-  height="142"
+  height="160"
   fill="none"
 >
   <g
@@ -13,27 +13,39 @@
     stroke-linejoin="round"
   >
     <!-- V -->
-    <path d="M78 52 L111 95 L146 52" />
+    <path d="M78 30 L111 73 L146 30" />
 
     <!-- A: inverted-V shape, no crossbar -->
-    <path d="M161 96 L194 52 L227 96" />
+    <path d="M161 74 L194 30 L227 74" />
 
     <!-- L -->
-    <path d="M258 52 V88 Q258 96 266 96 H298" />
+    <path d="M258 30 V66 Q258 74 266 74 H298" />
 
     <!-- I -->
-    <path d="M331 52 V96" />
+    <path d="M331 30 V74" />
 
     <!-- S -->
     <path d="
-      M411 52
+      M411 30
       H386
-      Q372 52 372 64
-      Q372 74 386 74
+      Q372 30 372 42
+      Q372 52 386 52
       H402
-      Q416 74 416 85
-      Q416 96 402 96
+      Q416 52 416 63
+      Q416 74 402 74
       H374
     " />
   </g>
+
+  <!-- CYBERNET -->
+  <text
+    x="238"
+    y="126"
+    fill="#122e74"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="24"
+    font-weight="400"
+    letter-spacing="7"
+    text-anchor="middle"
+  >CYBERNET</text>
 </svg>

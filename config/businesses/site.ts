@@ -1,12 +1,12 @@
 
 // config/site.ts
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://valistech.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://valisCybernet.vercel.app";
 
 export const site = {
   url: siteUrl,
-  name: "Valis Technologies",
-  shortName: "Valis Tech",
+  name: "Valis CyberNet",
+  shortName: "Valis Cybernet",
   description:
     "Valis Technologies builds custom websites, web apps, and AI-assisted digital infrastructure for growing businesses in Zimbabwe and Southern Africa.",
   locale: "en_ZW",

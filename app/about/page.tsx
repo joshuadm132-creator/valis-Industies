@@ -12,11 +12,11 @@ import TeamRotator from "@/components/TeamRotator";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Valis Technologies is a Harare-based web design studio building modern websites for growing businesses across Zimbabwe and Southern Africa.",
+    `${business.name} is a Harare-based web design studio building modern websites for growing businesses across Zimbabwe and Southern Africa.`,
   alternates: { canonical: "/about" },
   openGraph: {
     url: `${site.url}/about`,
-    title: "About Valis Technologies",
+    title: `About ${business.name}`,
     description:
       "A Harare-based studio building modern websites for Zimbabwe and Southern Africa.",
   },

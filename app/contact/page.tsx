@@ -7,11 +7,11 @@ import { site } from "@/config/businesses/site";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Valis Technologies in Harare. Send a message, chat on WhatsApp, or call to discuss your website project.",
+    `Get in touch with ${business.name} in Harare. Send a message, chat on WhatsApp, or call to discuss your website project.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     url: `${site.url}/contact`,
-    title: "Contact Valis Technologies",
+    title: `Contact ${business.name}`,
     description:
       "Message, WhatsApp, or call to discuss your website project in Zimbabwe.",
   },

@@ -8,7 +8,7 @@ import NotOffered from "@/components/NotOffered";
 import MapNavigation from "@/components/Map/MapNavigation";
 
 export const metadata: Metadata = {
-  title: "Web Design & Development Services",
+  title: `Web Design & Development Services by ${business.name}`,
   description:
     "Custom websites, property listings, payment integration, and SEO for businesses in Harare and across Zimbabwe.",
   alternates: { canonical: "/services" },
@@ -32,7 +32,7 @@ const servicesJsonLd = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Valis Technologies Services",
+    name: `${business.name} Services`,
     itemListElement: business.services.contents.map((s: any) => ({
       "@type": "Offer",
       itemOffered: {

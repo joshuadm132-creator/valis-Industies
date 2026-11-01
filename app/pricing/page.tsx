@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   openGraph: {
     url: `${site.url}/pricing`,
-    title: "Packages & Care Plans | Valis Technologies",
+    title: `Packages & Care Plans | ${business.name}`,
     description:
       "Starter, Business, and Pro website builds from $250 with monthly care plans from $15.",
   },

@@ -92,7 +92,7 @@ export default function WebsiteAssembly() {
       {/* Small assembly indicator */}
       <div
         aria-hidden="true"
-        className="website-assembly-indicator absolute bottom-[3%] left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap border border-blue-200 bg-white/90 px-3 py-2 shadow-sm"
+        className="website-assembly-indicator absolute bottom-[-10%] left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap border border-blue-200 bg-white/90 px-3 py-2 shadow-sm"
       >
         <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
         <span className="text-[10px] font-medium tracking-[0.16em] text-slate-500">
