@@ -1,15 +1,15 @@
+
 // components/services.tsx
 "use client";
 
+
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { ServiceCardReveal, type ServiceCardData } from "@/components/serviceCard";
-
+import ServiceIllustration from "@/components/serviceIllustration";
 /* ============================================================
-   Types — match your Talos.tsx shape
+   Types
    ============================================================ */
 
 export type ServiceContent = {
@@ -24,7 +24,6 @@ export type Service = {
   id: string;
   title: string;
   description: string;
-  /** Optional short tag — falls back to nothing */
   tag?: string;
   content?: ServiceContent[];
   button?: { text: string; href: string };
@@ -32,7 +31,6 @@ export type Service = {
 
 type ServicesProps = {
   headline: string;
-  /** Optional subtitle under the headline */
   subheadline?: string;
   services: Service[];
   variant?: "preview" | "full";
@@ -49,15 +47,24 @@ export default function Services({
   variant = "preview",
 }: ServicesProps) {
   return (
-    <section className="py-20 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className="max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text uppercase">
+    <section className="bg-background px-6 py-20">
+      <div className="mx-auto max-w-6xl">
+        {/* Centered section header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 text-base font-semibold tracking-[0.16em] text-primary">
+            WHAT WE DO IN FULL
+          </p>
+           <p className="mb-4 text-sm font-semibold tracking-[0.16em] text-accent">
+            just click
+          </p>
+          
+
+          <h2 className="font-heading text-3xl font-bold uppercase text-text md:text-4xl">
             {headline}
           </h2>
+
           {subheadline && (
-            <p className="mt-4 text-lg text-text-muted leading-relaxed">
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-muted">
               {subheadline}
             </p>
           )}
@@ -76,32 +83,194 @@ export default function Services({
 }
 
 /* ============================================================
-   HOME / PREVIEW — a clean 3-column grid of cards
+   Service card
+   ============================================================ */
 
-   Personal note . No idea how this works need to lean it.
+type ServiceCardProps = {
+  service: Service;
+  index: number;
+  active?: boolean;
+  href?: string;
+  onClick?: () => void;
+};
+
+/**
+ * Shared card used by both the homepage preview
+ * and the full services page.
+ *
+ * Shape:
+ * - Very rounded top-left
+ * - Rounded top-right
+ * - Rounded bottom-left
+ * - Square bottom-right
+ */
+function ServiceCard({
+  service,
+  index,
+  active = false,
+  href,
+  onClick,
+}: ServiceCardProps) {
+  const cardClassName = `
+    group relative flex h-full min-h-[245px] flex-col
+    overflow-hidden border border-border bg-surface
+    rounded-tl-3xl rounded-tr-3xl rounded-bl-3xl rounded-br-none
+    p-6 md:p-7
+    text-left
+    transition-all duration-300 ease-out
+    hover:border-primary/50
+    hover:-translate-y-1
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-primary
+    focus-visible:ring-offset-4
+    ${active ? "border-primary bg-primary/5" : ""}
+  `;
+
+  const cardContent = (
+    <>
+      {/* Top row */}
+      <div className="flex items-center justify-between gap-4">
+        {/* Category tag */}
+        {service.tag ? (
+          <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium tracking-wide text-primary">
+            {service.tag}
+          </span>
+        ) : (
+          <span />
+        )}
+
+        {/* Service number */}
+        <span className="font-heading text-sm tabular-nums text-text-muted/60">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* Text content */}
+      <div className="mt-7 flex-1">
+        <h3 className="font-heading text-xl font-semibold leading-snug text-text md:text-2xl">
+          {service.title}
+        </h3>
+
+        <p className="mt-3 text-base leading-relaxed text-text-muted">
+          {service.description}
+        </p>
+      </div>
+
+      {/* Bottom row */}
+      <div className="mt-6 flex items-center justify-between">
+        <span className="text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+          {onClick ? (active ? "Close details" : "Explore service") : "Explore service"}
+        </span>
+
+        {/* Small decorative arrow */}
+        <span
+          aria-hidden="true"
+          className={`
+            flex h-9 w-9 items-center justify-center
+            rounded-full border border-border
+            text-primary
+            transition-all duration-300
+            group-hover:border-primary
+            group-hover:bg-primary
+            group-hover:text-text-inverse
+            ${active ? "rotate-45 border-primary bg-primary text-text-inverse" : ""}
+          `}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className="h-4 w-4"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M7 17 17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </span>
+      </div>
+
+      {/* Minimal decorative accent in the top corner */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 h-1 w-0 bg-primary/70 transition-all duration-300 group-hover:w-100"
+      />
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={cardClassName}>
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={active}
+      className={cardClassName}
+    >
+      {cardContent}
+    </button>
+  );
+}
+
+/* ============================================================
+   HOME / PREVIEW
    ============================================================ */
 
 function PreviewGrid({ services }: { services: Service[] }) {
   return (
     <>
-      <div className="mt-14 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => (
-          <ServiceCardReveal
-            key={service.id}
-            delay={i * 80}
-            service={toCardData(service, i)}
-            href={`/services/#${service.id}`}
-          />
+          <Reveal key={service.id} delay={i * 80}>
+            <ServiceCard
+              service={service}
+              index={i}
+              href={`/services/#${service.id}`}
+            />
+          </Reveal>
         ))}
       </div>
 
       <Reveal delay={services.length * 80 + 100}>
-        <div className="mt-12">
+        <div className="mt-12 flex justify-center">
           <Link
             href="/services"
-            className="inline-block px-6 py-3 bg-red-600 text-text-inverse rounded-tl-sm rounded-tr-xl rounded-bl-xl rounded-br-nonehover:bg-primary-hover transition font-medium"
+            className="
+              inline-flex items-center gap-3
+              bg-primary px-6 py-3
+              font-medium text-text-inverse
+              rounded-tl-sm rounded-tr-xl
+              rounded-bl-xl rounded-br-none
+              transition-colors
+              hover:bg-primary-hover
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-primary
+              focus-visible:ring-offset-4
+            "
           >
             Explore All Services
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              className="h-4 w-4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M7 17 17 7" />
+              <path d="M7 7h10v10" />
+            </svg>
           </Link>
         </div>
       </Reveal>
@@ -110,36 +279,48 @@ function PreviewGrid({ services }: { services: Service[] }) {
 }
 
 /* ============================================================
-   SERVICES PAGE / FULL — same cards, click to expand in place
+   SERVICES PAGE / FULL
    ============================================================ */
 
 function FullAccordion({ services }: { services: Service[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
+
   const openService = services.find((s) => s.id === openId) ?? null;
 
   const detailRef = useRef<HTMLDivElement | null>(null);
-  // Skip the scroll on the very first render (initial state, no user action)
+
+  // Skip scrolling on initial render.
   const hasInteracted = useRef(false);
 
-  // Deep-link support (unchanged)
+  /* ------------------------------------------------------------
+     Deep-link support
+     ------------------------------------------------------------ */
+
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
+
     if (!hash) return;
-    const match = services.find((s) =>
-      s.content?.some((c) => c.id === hash)
+
+    const match = services.find(
+      (s) =>
+        s.id === hash ||
+        s.content?.some((c) => c.id === hash)
     );
+
     if (match) {
       setOpenId(match.id);
-      hasInteracted.current = true;   // deep link counts as interaction
+      hasInteracted.current = true;
     }
   }, [services]);
 
-  // Scroll to the detail panel whenever it opens or changes
+  /* ------------------------------------------------------------
+     Scroll to detail panel when a card opens
+     ------------------------------------------------------------ */
+
   useEffect(() => {
     if (!hasInteracted.current) return;
-    if (!openId) return;   // closing — do NOT scroll
+    if (!openId) return;
 
-    // Wait one frame so the panel has actually mounted in the DOM
     const raf = requestAnimationFrame(() => {
       detailRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -150,6 +331,10 @@ function FullAccordion({ services }: { services: Service[] }) {
     return () => cancelAnimationFrame(raf);
   }, [openId]);
 
+  /* ------------------------------------------------------------
+     Toggle
+     ------------------------------------------------------------ */
+
   const toggle = (id: string) => {
     hasInteracted.current = true;
     setOpenId((prev) => (prev === id ? null : id));
@@ -157,14 +342,18 @@ function FullAccordion({ services }: { services: Service[] }) {
 
   return (
     <>
-      <div className="mt-14 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => (
-          <div key={service.id} id={service.id} className="scroll-mt-24">
-            <ServiceCardReveal
-              delay={i * 60}
-              service={toCardData(service, i)}
-              onClick={() => toggle(service.id)}
+          <div
+            key={service.id}
+            id={service.id}
+            className="h-full scroll-mt-24"
+          >
+            <ServiceCard
+              service={service}
+              index={i}
               active={openId === service.id}
+              onClick={() => toggle(service.id)}
             />
           </div>
         ))}
@@ -184,26 +373,33 @@ function FullAccordion({ services }: { services: Service[] }) {
 }
 
 /* ============================================================
-   Expanded detail panel (replaces the old "full" content stack)
+   Expanded detail panel
    ============================================================ */
 
 function ServiceDetail({ service }: { service: Service }) {
   return (
-    <div className="rounded-none border border-border bg-surface p-6 md:p-10">
+    <div className="border border-border bg-surface p-6 md:p-10">
       <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
         {/* Text column */}
         <div>
           {service.content?.map((block) => (
-            <div key={block.id} id={block.id} className="scroll-mt-24">
+            <div
+              key={block.id}
+              id={block.id}
+              className="scroll-mt-24"
+            >
               {block.subtitle && (
-                <h4 className="text-xl md:text-2xl font-heading font-semibold text-text">
+                <h4 className="font-heading text-xl font-semibold text-text md:text-2xl">
                   {block.subtitle}
                 </h4>
               )}
 
               <div className="mt-4 space-y-4">
                 {block.paragraphs?.map((p, i) => (
-                  <p key={i} className="text-text-muted leading-relaxed">
+                  <p
+                    key={i}
+                    className="leading-relaxed text-text-muted"
+                  >
                     {p}
                   </p>
                 ))}
@@ -216,7 +412,9 @@ function ServiceDetail({ service }: { service: Service }) {
                       key={i}
                       className="flex items-start gap-2 text-sm text-text"
                     >
-                      <span className="text-accent font-bold shrink-0">✓</span>
+                      <span className="shrink-0 font-bold text-accent">
+                        ✓
+                      </span>
                       <span>{f}</span>
                     </li>
                   ))}
@@ -228,46 +426,47 @@ function ServiceDetail({ service }: { service: Service }) {
           {service.button && (
             <Link
               href={service.button.href}
-              className="inline-block mt-8 px-6 py-3 bg-primary text-text-inverse rounded-lg hover:bg-primary-hover transition font-medium"
+              className="
+                mt-8 inline-flex items-center gap-3
+                bg-primary px-6 py-3
+                font-medium text-text-inverse
+                rounded-tl-sm rounded-tr-xl
+                rounded-bl-xl rounded-br-none
+                transition-colors
+                hover:bg-primary-hover
+              "
             >
               {service.button.text}
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-4 w-4"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
             </Link>
           )}
         </div>
 
-        {/* Visual column — image or a placeholder */}
-        <div className="order-first md:order-last">
-          <div className="aspect-[6/4] rounded-xl overflow-hidden ">
-            {service.content?.[0]?.image ? (
-              <Image
-                src={service.content[0].image}
-                alt={service.title}
-                width={800}
-                height={800}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-text-muted/50 text-sm">
-                {service.title}
-              </div>
-            )}
-          </div>
-        </div>
+        {/* Visual column */}
+        
+{/* SVG Illustration column */}
+<div className="order-first md:order-last flex items-center justify-center">
+  <div className="w-full overflow-hidden rounded-tl-3xl rounded-tr-3xl rounded-bl-3xl rounded-br-none bg-background p-4 md:p-6">
+    <ServiceIllustration
+      serviceId={service.id}
+      className="h-auto w-full"
+    />
+  </div>
+</div>
+
       </div>
     </div>
   );
-}
-
-/* ============================================================
-   Helpers
-   ============================================================ */
-
-function toCardData(service: Service, index: number): ServiceCardData {
-  return {
-    id: service.id,
-    title: service.title,
-    description: service.description,
-    tag: service.tag,
-    index: String(index + 1).padStart(2, "0"),
-  };
 }

@@ -31,10 +31,10 @@ export const Valis = {
     whatsapp: "+263778935618",
 
     socials: [
-      { label: "Instagram", href: "https://instagram.com/talos", icon: "instagram" },
-      { label: "LinkedIn", href: "https://linkedin.com/company/talos", icon: "linkedin" },
-      { label: "Facebook", href: "https://facebook.com/talos", icon: "facebook" },
-      { label: "X", href: "https://x.com/talos", icon: "x" },
+      // { label: "Instagram", href: "https://instagram.com/talos", icon: "instagram" },
+      // { label: "LinkedIn", href: "https://linkedin.com/company/talos", icon: "linkedin" },
+      // { label: "Facebook", href: "https://facebook.com/talos", icon: "facebook" },
+      // { label: "X", href: "https://x.com/talos", icon: "x" },
     ] as SocialConfig[],
 
     form: {
@@ -286,18 +286,18 @@ contactContent: {
     columns: 2 as const,
     background: "dark" as const,
     items: [
-      {
-        id: "no-ecommerce-platform",
-        title: "We don't build full ecommerce platforms",
-        description:
-          "If you need a full product catalogue with cart, checkout, inventory, and shipping logic, we'll refer you to a specialised ecommerce partner.",
-      },
-      {
-        id: "no-booking-engine",
-        title: "We don't run a booking or reservation engine",
-        description:
-          "For lodges and hospitality, we build listings that send enquiries directly to you. We don't process bookings or hold guest data on your behalf.",
-      },
+      // {
+      //   id: "no-ecommerce-platform",
+      //   title: "We don't build full ecommerce platforms",
+      //   description:
+      //     "If you need a full product catalogue with cart, checkout, inventory, and shipping logic, we'll refer you to a specialised ecommerce partner.",
+      // },
+      // {
+      //   id: "no-booking-engine",
+      //   title: "We don't run a booking or reservation engine",
+      //   description:
+      //     "For lodges and hospitality, we build listings that send enquiries directly to you. We don't process bookings or hold guest data on your behalf.",
+      // },
       {
         id: "no-payment-handling",
         title: "We don't handle money",
@@ -1224,15 +1224,15 @@ contactContent: {
           { label: "Contact", href: "/contact" },
         ],
       },
-      {
-        title: "Connect",
-        links: [
-          { label: "Instagram", href: "https://instagram.com/talos" },
-          { label: "LinkedIn", href: "https://linkedin.com/company/talos" },
-          { label: "Facebook", href: "https://facebook.com/talos" },
-          { label: "X", href: "https://x.com/talos" },
-        ],
-      },
+      // {
+      //   title: "Connect",
+      //   links: [
+      //     { label: "Instagram", href: "https://instagram.com/talos" },
+      //     { label: "LinkedIn", href: "https://linkedin.com/company/talos" },
+      //     { label: "Facebook", href: "https://facebook.com/talos" },
+      //     { label: "X", href: "https://x.com/talos" },
+      //   ],
+      // },
     ],
   },
 
