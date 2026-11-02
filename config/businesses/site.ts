@@ -1,7 +1,7 @@
 
 // config/site.ts
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://valisCybernet.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://valiscybernet.vercel.app";
 
 export const site = {
   url: siteUrl,
